@@ -13,8 +13,11 @@ titles.field$Title <- gsub("n2o","N2O",
                            titles.field$Title,
                            ignore.case = TRUE)
 
+warm_colors <- c("#999999", "#009E73", "#0072B2", "#56B4E9")
+cold_colors <- c("#D55E00", "#E69F00", "#F0E442", "#CC79A7")
+
 wordcloud(titles.field$Title, min.freq = 5,
-          colors = brewer.pal(8, "Dark2"),
+          colors = c(warm_colors,cold_colors),
           random.order = F)
 
 
