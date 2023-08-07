@@ -1,10 +1,7 @@
 #This script is to analyze the data for GHG emissions from manure-applied field
-library(tidyverse)
-library(ggplot2)
-library(reshape2)
-library(scatterpie)
-library(stringr)
-library(ggpubr)
+library(tidyverse);library(ggplot2)
+library(reshape2);library(scatterpie)
+library(stringr);library(ggpubr)
 library(openxlsx2)
 #read data
 GHG <- read.csv("input/data of ghg emission.csv",header = T)
@@ -13,9 +10,17 @@ GHG <- read.csv("input/data of ghg emission.csv",header = T)
 GHG.field <- GHG[grepl("Field", GHG$GHG.source),]
 GHG.field <- GHG.field[!grepl("^Grass$", GHG.field$Field.crop),]
 GHG.field <- GHG.field[GHG.field$N2O==TRUE,]
+#exclude National studies
+GHG.field <- GHG.field[GHG.field$Region!="National",]
+GHG.field <- GHG.field %>%
+             drop_na(Livestock)
 #replace "National" to every provinces
-National<-paste(unique(GHG.field$Region)[c(-1,-3)], collapse = ", ")
-GHG.field$Region[GHG.field$Region == "National"] <- National
+#abandoned becasue nationa studies used modelling or other method only
+#This substaintially increased the study count in some provinces
+#National<-paste(unique(GHG.field$Region)[c(-1,-3)], collapse = ", ")
+#GHG.field$Region[GHG.field$Region == "National"] <- National
+
+
 #NIR N2O data, convert to kT CO2e
 N2O <- read.csv("input/N2O emission_NIR.csv", header = TRUE) %>%
   slice(c(2, 1, 9, 10, 7, 4, 3, 5, 6, 8, 11:16)) %>%
@@ -37,21 +42,21 @@ N2O.p <- N2O.p %>%
   select(2,1,10,3,7,9,4,6,8,5)
 #N2O.p$Total <- round(rowSums(N2O.p[,1:10]),0)
 
-#change the province sequence, must do this after obtaining percentage
+#change the province sequence for N2O emissions, must do this after obtaining percentage
 N2O <- N2O %>%
-  select(3,2,11,4,8,10,5,7,9,6)
+  select(3,2,11,4,8,10,5,7,9,6,12)
 
 
 #province frequency
-Prov <- unlist(strsplit(as.character(GHG.field$Region), ", "))
-prov_freq <- table(Prov)
-prov_freq[11] <- sum(prov_freq)
-prov_freq <- prov_freq[c(2,1,10,3,7,9,4,6,8,5,11)]
+# Prov <- unlist(strsplit(as.character(GHG.field$Region), ", "))
+# prov_freq <- table(Prov)
+# prov_freq[11] <- sum(prov_freq)
+# prov_freq <- prov_freq[c(2,1,10,3,7,9,4,6,8,5,11)]
 
 #Livestock types
-Livestock <- unlist(strsplit(as.character(GHG.field$Livestock), ", "))
-live_freq <- table(Livestock)
-live_freq <- c(live_freq[c(1,2,6,4,3,5)],0,sum(live_freq)) #included national study
+# Livestock <- unlist(strsplit(as.character(GHG.field$Livestock), ", "))
+# live_freq <- table(Livestock)
+# live_freq <- c(live_freq[c(1,2,6,4,3,5)],0,sum(live_freq)) #included national study
 #Beef 31, Dairy 60, swine 37, Horse 5, poultry 11, sheep 6, tot:150 (one NAs)
 
 Live.prov <- GHG.field %>%
@@ -60,11 +65,11 @@ Live.prov <- GHG.field %>%
   unnest(Livestock) %>%
   count(Region, Livestock) %>%
   pivot_wider(names_from = Region, values_from = n, values_fill = 0) %>%
-  slice(c(1,2,6,4,3,5,7)) %>%
-  {.[7,2] <- 0; .} %>% #replace the NA to 0
+  slice(c(1,2,5,3,4,6)) %>%
   mutate(Total = rowSums(across(-Livestock, .names = "n_{.col}"))) %>%
   # add a row for other, no other in my study
   {.[7, 1] <- "Other"; .} %>%
+  {.[7, 2:12] <- 0; .} %>%
   add_row(Livestock = "Total", !!!colSums(.[2:12]))
 
 
@@ -78,7 +83,7 @@ colnames(Live.prov.p) <- colnames(N2O.p)[1:10]
 
 #Do this after obtaining percentage
 Live.prov <- Live.prov %>%
-  select(c(3,2,11,4,8,10,5,7,9,6))
+  select(c(3,2,11,4,8,10,5,7,9,6,12))
 
 Table1 <- rbind(Live.prov.p,N2O.p)
 
@@ -92,8 +97,6 @@ Table1 <- rbind(Live.prov.p,N2O.p)
 # }
 #add the study frequency
 
-Table1 <- rbind(Table1,prov_freq) #the last variable, total was not added to Table 1
-rownames(Table1)[17] <- "Study freq"
 
 #Export file
 write_xlsx(list(Table1=Table1,N2O = N2O,study = Live.prov),
@@ -113,32 +116,29 @@ write_xlsx(list(Table1=Table1,N2O = N2O,study = Live.prov),
 
 
 
-
-
-year_freq <- table(GHG.field$Pub..year)
-
-# Year-Round vs. other, 53 studies, 53/141 =38%
-GHG.year <- GHG.field[grep(("Year-Round"),GHG.field$Season),]
-GHG.Dairy <- GHG.field[grep(("Dairy"),GHG.field$Livestock),] #69
-GHG.Beef <- GHG.field[grep(("Beef"),GHG.field$Livestock),] #37
-GHG.Swine <- GHG.field[grep(("Swine"),GHG.field$Livestock),] # 44
-GHG.Poultry <- GHG.field[grep(("Poultry"),GHG.field$Livestock),] #12
-
-
-#4. Manure types
-GHG.Solid <- GHG.field[grep(("Solid"),GHG.field$Manure.type),] #87
-GHG.Liquid <- GHG.field[grep(("Liquid"),GHG.field$Manure.type),] #94
-GHG.both <- GHG.field[grep(("Liquid, Solid"),GHG.field$Manure.type),] #42
-
-
-#GHG types
-sum(GHG.field$CO2) #59, 47.2%
-sum(GHG.field$CH4) #34, 27.2%
-sum(GHG.field$N2O) #109, 87.2%
-sum(GHG.field$NH3) #13
-
-#To know how many studies quantify the contirbution of methane and CO2 for year-round emissions
-GHG.CH4yearround <- GHG.field %>%
-                    filter(str_detect(Season, "Year-Round")&
-                    str_detect(CH4, "TRUE") &
-                    str_detect(CO2, "TRUE") ) #Only 193 Ellert had measurements
+# 
+# # Year-Round vs. other, 53 studies, 53/141 =38%
+# GHG.year <- GHG.field[grep(("Year-Round"),GHG.field$Season),]
+# GHG.Dairy <- GHG.field[grep(("Dairy"),GHG.field$Livestock),] #69
+# GHG.Beef <- GHG.field[grep(("Beef"),GHG.field$Livestock),] #37
+# GHG.Swine <- GHG.field[grep(("Swine"),GHG.field$Livestock),] # 44
+# GHG.Poultry <- GHG.field[grep(("Poultry"),GHG.field$Livestock),] #12
+# 
+# 
+# #4. Manure types
+# GHG.Solid <- GHG.field[grep(("Solid"),GHG.field$Manure.type),] #87
+# GHG.Liquid <- GHG.field[grep(("Liquid"),GHG.field$Manure.type),] #94
+# GHG.both <- GHG.field[grep(("Liquid, Solid"),GHG.field$Manure.type),] #42
+# 
+# 
+# #GHG types
+# sum(GHG.field$CO2) #59, 47.2%
+# sum(GHG.field$CH4) #34, 27.2%
+# sum(GHG.field$N2O) #109, 87.2%
+# sum(GHG.field$NH3) #13
+# 
+# #To know how many studies quantify the contirbution of methane and CO2 for year-round emissions
+# GHG.CH4yearround <- GHG.field %>%
+#                     filter(str_detect(Season, "Year-Round")&
+#                     str_detect(CH4, "TRUE") &
+#                     str_detect(CO2, "TRUE") ) #Only 193 Ellert had measurements
