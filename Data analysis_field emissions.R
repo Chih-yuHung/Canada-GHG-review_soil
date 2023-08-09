@@ -131,11 +131,7 @@ write_xlsx(list(Table1=Table1,N2O = N2O,study = Live.prov),
 # GHG.both <- GHG.field[grep(("Liquid, Solid"),GHG.field$Manure.type),] #42
 # 
 # 
-# #GHG types
-# sum(GHG.field$CO2) #59, 47.2%
-# sum(GHG.field$CH4) #34, 27.2%
-# sum(GHG.field$N2O) #109, 87.2%
-# sum(GHG.field$NH3) #13
+
 # 
 # #To know how many studies quantify the contirbution of methane and CO2 for year-round emissions
 # GHG.CH4yearround <- GHG.field %>%
