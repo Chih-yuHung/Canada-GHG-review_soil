@@ -1,0 +1,123 @@
+Authors and year,Regions,Animal types,Methods,GHG types
+"Chang et al., 1998",AB,Beef Cattle,OB,N?O
+"Lemke et al., 1999",AB,Sheep,OB,N?O
+"Ellert et al., 2008",AB,Beef Cattle,OB,"CO?, CH?, N?O"
+"Beauchemin et al., 2010",AB,Beef Cattle,MX,"CH?, N?O"
+"Chiyoka et al., 2011",AB,Beef Cattle,OB,"CO?, N?O"
+"Miller et al., 2012",AB,Beef Cattle,OB,N?O
+"Basarab et al., 2012",AB,Beef Cattle,MX,"CH?, N?O"
+"Hunerberg et al., 2014",AB,Beef Cattle,MX,"CH?, N?O"
+"Hao et al., 2015",AB,Dairy Cattle,OB,"CO?, N?O"
+"Li et al., 2016",AB,Beef Cattle,OB,"CO?, N?O"
+"Giweta et al., 2016",AB,Beef Cattle,OB,"CO?, N?O"
+"Tang et al., 2016",AB,Beef Cattle,OB,N?O
+"Thomas et al., 2017",AB,Beef Cattle,OB,N?O
+"Lin et al., 2017",AB,Swine,OB,N?O
+"Zhu et al., 2018",AB,,OB,"CO?, CH?, N?O"
+"Dimitrov et al., 2019",AB,"Beef Cattle, Dairy Cattle, Swine, Poultry, Sheep",MD,"CH?, N?O"
+"Shen et al., 2019",AB,Beef Cattle,"OB, MD",N?O
+"Alvarez-Hess et al., 2019",AB,Dairy Cattle,MX,"CO?, CH?, N?O"
+"Grant et al., 2020",AB,Dairy Cattle,"OB, MD",N?O
+"Wu et al., 2020",AB,Dairy Cattle,OB,"CO?, CH?, N?O"
+"Pokharel et al., 2021",AB,Dairy Cattle,OB,N?O
+"Pokharel et al., 2021",AB,Dairy Cattle,OB,"CO?, N?O"
+"Romero et al., 2021",AB,Beef Cattle,OB,"CO?, CH?, N?O"
+"Lin et al., 2021",AB,Dairy Cattle,OB,N?O
+"Lin et al., 2021",AB,Dairy Cattle,OB,"CO?, N?O"
+"Lin et al., 2021",AB,Swine,MD,N?O
+"Gong et al., 2022",AB,Dairy Cattle,OB,"CO?, N?O"
+"Weber et al., 2022",AB,Beef Cattle,OB,"CO?, CH?, N?O"
+"Lin et al., 2023",AB,"Dairy Cattle, Swine",OB,N?O
+"Weber et al., 2023",AB,Beef Cattle,OB,"CH?, N?O"
+"Thivierge et al., 2017","AB, QC",Dairy Cattle,MD,"CH?, N?O"
+"Holtshausen et al., 2021","AB, QC",Dairy Cattle,MX,"CO?, CH?, N?O"
+"Bhandral et al., 2008",BC,Dairy Cattle,"OB, OB",N?O
+"Bhandral et al., 2009",BC,Dairy Cattle,OB,N?O
+"Maltais-Landry et al., 2018",BC,"Horse, Poultry",OB,"CO?, CH?, N?O"
+"Maltais-Landry et al., 2019",BC,Poultry,OB,"CO?, CH?, N?O"
+"Hunt et al., 2019",BC,Dairy Cattle,OB,N?O
+"Mirmasoudi et al., 2019",BC,Beef Cattle,MD,"CH?, N?O"
+"Maltais-Landry et al., 2019",BC,"Poultry, Horse",OB,"CO?, CH?, N?O"
+"Zhang et al., 2021",BC,Dairy Cattle,MX,"CH?, N?O"
+"Tenuta et al., 2010",MB,Swine,OB,"CO?, CH?, N?O"
+"Tremorin et al., 2012",MB,Beef Cattle,OB,N?O
+"Stewart et al., 2014",MB,Beef Cattle,MX,"CH?, N?O"
+"Gao et al., 2014",MB,Swine,OB,"CO?, CH?, N?O"
+"Asgedom et al., 2014",MB,Dairy Cattle,OB,N?O
+"Alemu et al., 2016",MB,"Swine, Dairy Cattle",MX,"CH?, N?O"
+"Niki?ma et al., 2016",MB,Swine,OB,N?O
+"Alemu et al., 2016",MB,Beef Cattle,MD,"CO?, CH?, N?O"
+"Yitbarek et al., 2017",MB,Swine,OB,"CO?, CH?, N?O"
+"Westphal et al., 2018",MB,Dairy Cattle,OB,N?O
+"Adelekun et al., 2019",MB,Swine,OB,N?O
+"Adelekun et al., 2021",MB,Swine,OB,N?O
+"Vergé et al., 2007",Multiple,Dairy Cattle,MX,"CH?, N?O"
+"Hutchinson et al., 2007",Multiple,"Dairy Cattle, Beef Cattle, Swine, Sheep, Poultry, Horse",MD,N?O
+"Rochette et al., 2008",Multiple,"Dairy Cattle, Beef Cattle, Swine, Poultry, Sheep, Horse",MD,N?O
+"Alemu et al., 2017",Multiple,Beef Cattle,MD,"CH?, N?O"
+"Liang et al., 2020",Multiple,"Beef Cattle, Dairy Cattle",MD,"CO?, CH?, N?O"
+"He et al., 2020",Multiple,"Dairy Cattle, Swine","OB, MD",N?O
+"Binggeli et al., 2021",Multiple,Dairy Cattle,MX,"CO?, CH?, N?O"
+"Turner et al., 2022",Multiple,Poultry,MX,"CH?, N?O"
+"Ashiq et al., 2020",NA,Dairy Cattle,OB,"CO?, CH?, N?O"
+"Miller et al., 2009",NB,Dairy Cattle,OB,"CO?, N?O"
+"Mkhabela et al., 2006",NS,Swine,OB,N?O
+"Mkhabela et al., 2006",NS,Swine,OB,N?O
+"Mkhabela et al., 2008",NS,"Dairy Cattle, Beef Cattle","OB, OB",N?O
+"Mkhabela et al., 2008",NS,Swine,OB,N?O
+"Mkhabela et al., 2009",NS,Swine,OB,N?O
+"Paul et al., 1993",ON,"Dairy Cattle, Beef Cattle",OB,N?O
+"Lessard et al., 1996",ON,Dairy Cattle,OB,N?O
+"Wagner-Riddle et al., 1997",ON,Dairy Cattle,OB,N?O
+"Loro et al., 1997",ON,"Dairy Cattle, Beef Cattle",OB,"CO?, N?O"
+"Wagner-Riddle et al., 1998",ON,Dairy Cattle,OB,N?O
+"Tenuta et al., 2000",ON,"Dairy Cattle, Beef Cattle",OB,"CO?, N?O"
+"Yang et al., 2002",ON,Swine,OB,"CO?, N?O"
+"Yang et al., 2003",ON,Swine,OB,"CO?, N?O"
+"Yang et al., 2004",ON,Swine,OB,N?O
+"Yang et al., 2008",ON,Swine,OB,"CO?, N?O"
+"Kariyapperuma et al., 2012",ON,Swine,OB,N?O
+"Drury et al., 2014",ON,Swine,OB,"CO?, N?O"
+"Cambareri et al., 2016",ON,Dairy Cattle,OB,N?O
+"Schwager et al., 2016",ON,Dairy Cattle,OB,N?O
+"Abalos et al., 2016",ON,Dairy Cattle,OB,N?O
+"Snider et al., 2017",ON,Dairy Cattle,"OB, OB",N?O
+"Sulaiman et al., 2017",ON,Dairy Cattle,OB,"CO?, N?O"
+"Cambareri et al., 2017",ON,Dairy Cattle,OB,N?O
+"Guest et al., 2017",ON,Dairy Cattle,MX,"CO?, CH?, N?O"
+"Mechler et al., 2018",ON,Poultry,OB,"CO?, N?O"
+"Quesnel et al., 2019",ON,Dairy Cattle,OB,N?O
+"Smith et al., 2019",ON,Dairy Cattle,MD,N?O
+"He et al., 2019",ON,Dairy Cattle,"OB, MD",N?O
+"Abassi et al., 2020",ON,Dairy Cattle,OB,N?O
+"Boh et al., 2020",ON,"Beef Cattle, Dairy Cattle, Swine, Poultry, Sheep",MD,N?O
+"Jiang et al., 2020",ON,Dairy Cattle,"OB, MD","CO?, N?O"
+"Bhatt et al., 2022",ON,Sheep,MX,"CH?, N?O"
+"Abbasi et al., 2022",ON,Beef Cattle,OB,"CO?, N?O"
+"Smith et al., 2008",PE,Swine,OB,N?O
+"Rochette et al., 2000",QC,Swine,OB,N?O
+"Van Bochove et al., 2001",QC,Swine,OB,N?O
+"Chantigny et al., 2001",QC,Swine,OB,"CO?, N?O"
+"Chantigny et al., 2002",QC,"Dairy Cattle, Swine",OB,"CO?, N?O"
+"Rochette et al., 2004",QC,Swine,OB,"CO?, N?O"
+"Chantigny et al., 2007",QC,Swine,OB,N?O
+"Sey et al., 2008",QC,Dairy Cattle,OB,"CO?, N?O"
+"Pattey et al., 2008",QC,Dairy Cattle,OB,N?O
+"Rochette et al., 2008",QC,Dairy Cattle,OB,N?O
+"Chantigny et al., 2010",QC,Swine,OB,N?O
+"Pelster et al., 2012",QC,"Swine, Dairy Cattle, Poultry",OB,"CO?, N?O"
+"Chantigny et al., 2013",QC,Swine,OB,N?O
+"Tatti et al., 2014",QC,"Dairy Cattle, Poultry",OB,N?O
+"Chantigny et al., 2016",QC,Swine,OB,"CO?, N?O"
+"Cuellar et al., 2016",QC,Horse,OB,"CO?, N?O"
+"Little et al., 2017",QC,Dairy Cattle,MX,"CH?, N?O"
+"Guyader et al., 2017",QC,Dairy Cattle,MX,"CH?, N?O"
+"Brassard et al., 2018",QC,Swine,OB,"CO?, N?O"
+"Fournel et al., 2019",QC,Dairy Cattle,MD,"CO?, CH?, N?O"
+"Hung et al., 2021",QC,Dairy Cattle,MD,N?O
+"Hung et al., 2021",QC,Dairy Cattle,OB,N?O
+"Ejack et al., 2021",QC,Dairy Cattle,OB,N?O
+"Pelster et al., 2021",QC,"Dairy Cattle, Swine",OB,N?O
+"Pennock et al., 2005",SK,Beef Cattle,OB,N?O
+"Chen et al., 2020",SK,Beef Cattle,MX,"CO?, CH?, N?O"
+"Hangs et al., 2023",SK,"Dairy Cattle, Swine",OB,"CO?, CH?, N?O"
