@@ -15,8 +15,8 @@ GHG.field <- GHG.field[GHG.field$Region!="National",]
 GHG.field <- GHG.field %>%
              drop_na(Livestock)
 #replace "National" to every provinces
-#abandoned becasue nationa studies used modelling or other method only
-#This substaintially increased the study count in some provinces
+#abandoned becasue national studies used modelling or other method only
+#This substantially increased the study count in some provinces
 #National<-paste(unique(GHG.field$Region)[c(-1,-3)], collapse = ", ")
 #GHG.field$Region[GHG.field$Region == "National"] <- National
 
@@ -48,16 +48,16 @@ N2O <- N2O %>%
 
 
 #province frequency
-# Prov <- unlist(strsplit(as.character(GHG.field$Region), ", "))
-# prov_freq <- table(Prov)
-# prov_freq[11] <- sum(prov_freq)
-# prov_freq <- prov_freq[c(2,1,10,3,7,9,4,6,8,5,11)]
+Prov <- unlist(strsplit(as.character(GHG.field$Region), ", "))
+prov_freq <- table(Prov)
+prov_freq[11] <- sum(prov_freq)
+prov_freq <- prov_freq[c(2,1,10,3,7,9,4,6,8,5,11)]
 
 #Livestock types
-# Livestock <- unlist(strsplit(as.character(GHG.field$Livestock), ", "))
-# live_freq <- table(Livestock)
-# live_freq <- c(live_freq[c(1,2,6,4,3,5)],0,sum(live_freq)) #included national study
-#Beef 31, Dairy 60, swine 37, Horse 5, poultry 11, sheep 6, tot:150 (one NAs)
+Livestock <- unlist(strsplit(as.character(GHG.field$Livestock), ", "))
+live_freq <- table(Livestock)
+live_freq <- c(live_freq[c(1,2,6,4,3,5)],0,sum(live_freq)) 
+#Beef 29, Dairy 55, swine 36, Horse 3, poultry 8, sheep 4, tot:135 (one NAs)
 
 Live.prov <- GHG.field %>%
   separate_rows(Region, sep = ", ") %>%

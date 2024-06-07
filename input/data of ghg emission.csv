@@ -265,3 +265,6 @@ ID,First author,Pub. year,Journal,Region,Start Year,End,Period,Season,Research t
 264,Weber,2022,Soil systems,Alberta,2017,2017,Single Year,Growing,Lab,Incubation,Beef Cattle,Whole herd,Indoor,"Antibiotics, Diet",Solid,NA,Field,NA,T,T,T,F,"Med, Fine",NA
 265,VanderZaag,2022,Bioresource Technology Reports,British Columbia,2019,2019,Single Year,Year-Round,Farm,Micrometeorology,Dairy Cattle,Cows,Indoor,NA,Liquid,"Digester, Solid-Liquid Separation",Storage,NA,F,T,F,F,NA,NA
 266,Abalos,2016,Global Change Biology,Ontario,2011,2014,Multiple Years,Year-Round,Field,Micrometeorology,Dairy Cattle,Whole herd,Indoor,NA,Liquid,NA,Field,"Annual crop, Perennial crop",F,F,T,F,Med,"Spring, Fall"
+329,Lin,2023,Nutrient Cycling in Agroecosystems,Alberta,2015,2017,Multiple Years,Growing,Field,Soil chamber,"Dairy Cattle, Swine",Whole herd,Indoor,NA,Liquid,NA,Field,Annual crop,F,F,T,F,Fine,"Spring, Fall"
+330,Hangs,2023,Bioenergy Research,Saskatchewan,2013,2016,Single Year,NA,Lab,Incubation,"Beef Cattle, Swine",Whole herd,Indoor,NA,"Liquid, Solid",NA,Field,Annual crop,T,T,T,F,"Fine, Med",Spring
+331,Weber,2023,Land,Alberta,2020,2020,Single Year,Growing,Field,Soil chamber,Beef Cattle,Whold herd,Indoor,Biochar,Solid,Stockpile,Field,Annual crop,F,T,T,F,Coarse,Fall

@@ -35,9 +35,9 @@ texture_count <- texture_count %>%
   mutate(Percentage = n / total)
 
 #Some summary data
-sum(texture_count$n[texture_count$Texture=="Fine"]) #17
+sum(texture_count$n[texture_count$Texture=="Fine"]) #18
 sum(texture_count$n[texture_count$Texture=="Med"]) #47
-sum(texture_count$n[texture_count$Texture=="Coarse"]) #8
+sum(texture_count$n[texture_count$Texture=="Coarse"]) #9
 
 
 #read data from SLC

@@ -1,4 +1,5 @@
 #To create Bubble chart to know the application time and spatial distribution
+library(tidyverse)
 library(ggplot2)
 
 #The color in this study
@@ -19,15 +20,15 @@ GHG.field$Region[GHG.field$Region == "National"] <- National
 #Application time
 GHG.application <- GHG.field %>%
     filter(Application.time != "NA") %>% #Five studies didn't report application time
-  filter(str_detect(Technique, "Micrometeorology")|
+    filter(str_detect(Technique, "Micrometeorology")|
            str_detect(Technique, "Soil chamber")) %>%
-  separate_rows(Region, sep =", ") %>%
-  separate_rows(Manure.type, sep = ", ") %>%
-  separate_rows(Season, sep = ", ") %>%
-  separate_rows(Application.time, sep = ", ") %>%
-  group_by( Application.time, Season, Manure.type) %>%
-  summarise(Count = n()) %>%
-  ungroup()
+    separate_rows(Region, sep =", ") %>%
+    separate_rows(Manure.type, sep = ", ") %>%
+    separate_rows(Season, sep = ", ") %>%
+    separate_rows(Application.time, sep = ", ") %>%
+    group_by(Region, Application.time, Season, Manure.type) %>%
+    summarise(Count = n()) %>%
+    ungroup()
 
 
 GHG.application$Region <- factor(GHG.application$Region,
@@ -44,7 +45,7 @@ png(file = "output/application time.png",
     width = 4800, height = 3600, res = 600)
 ggplot(GHG.application, aes(x = Region, y = paste(Application.time, Season), color = Manure.type, size = Count)) +
   geom_point(alpha = 0.7) +
-  labs(x = "Region", y = "Application Time/Season", color = "Manure Type", size = "Count") +
+  labs(x = "Region", y = "Application time/season", color = "Manure type", size = "Count") +
   scale_color_manual(values = c(cold_colors[2],warm_colors[2])) +
   theme_classic()+
   scale_x_discrete(labels = c("BC", "AB","SK","MB",

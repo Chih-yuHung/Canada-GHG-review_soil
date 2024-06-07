@@ -39,9 +39,9 @@ season_data <- GHG.field %>%
 
 sum(season_data$Number[(season_data$Season == "Year-Round" |
                         season_data$Season == "Non-Growing") &
-                        season_data$Pub..year > 2015]) / (2022-2015) #14 and 2
+                        season_data$Pub..year > 2015]) / (2023-2015) #14 and 2
 sum(season_data$Number[season_data$Season == "Growing"  &
-                       season_data$Pub..year > 2015])  / (2022-2015) #17 and 2.4
+                       season_data$Pub..year > 2015])  / (2023-2015) #19 and 2.7
 sum(season_data$Number[(season_data$Season == "Year-Round" |
                         season_data$Season == "Non-Growing") &
                         season_data$Pub..year <= 2015]) / (2015-1989) #13 and 0.5
@@ -55,7 +55,7 @@ sum(season_data$Number[season_data$Season == "Year-Round"]) #17
 Fig2a <- ggplot(data = na.omit(season_data), 
                 aes(x = Pub..year, y = Number, fill = Season)) +
   geom_bar(stat = "identity") +
-  labs(x = "Publication Year", y = "Study Count") +
+  labs(x = "Publication year", y = "Study count") +
   scale_fill_manual(values = c(cold_colors)) +
   theme_classic() +
   theme(axis.text = element_text(size = 14, colour = "black"),
@@ -73,8 +73,8 @@ Fig2a <- ggplot(data = na.omit(season_data),
   scale_y_continuous(limits = c(0, 10), 
                      breaks = seq(0, 18, by = 2),
                      expand = c(0, 0)) +
-  scale_x_continuous(limits = c(1990, 2023), 
-                     breaks = seq(1990, 2023 , by = 5),
+  scale_x_continuous(limits = c(1990, 2024), 
+                     breaks = seq(1990, 2024 , by = 5),
                      expand = c(0, 0)) +
   annotate("text", x = 1991, y = 9.5, 
           label = "(a)",size = 6)
@@ -95,7 +95,7 @@ period_data <- GHG.field %>%
 Fig2b <- ggplot(data = na.omit(period_data), 
                 aes(x = Pub..year, y = Number, fill = Period)) +
   geom_bar(stat = "identity") +
-  labs(x = "Publication Year", y = "Study Count") +
+  labs(x = "Publication year", y = "Study count") +
   scale_fill_manual(values = c(cold_colors)) +
   theme_classic() +
   theme(axis.text = element_text(size = 14, colour = "black"),
@@ -113,8 +113,8 @@ Fig2b <- ggplot(data = na.omit(period_data),
   scale_y_continuous(limits = c(0, 10), 
                      breaks = seq(0, 18, by = 2),
                      expand = c(0, 0)) +
-  scale_x_continuous(limits = c(1990, 2023), 
-                     breaks = seq(1990, 2023 , by = 5),
+  scale_x_continuous(limits = c(1990, 2024), 
+                     breaks = seq(1990, 2024 , by = 5),
                      expand = c(0, 0)) +
   annotate("text", x = 1991, y = 9.5, 
            label = "(b)",size = 6)

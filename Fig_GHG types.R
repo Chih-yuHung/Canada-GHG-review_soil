@@ -1,5 +1,5 @@
 #To prepare figure for GHG types
-#Figure 1
+#Figure 5
 library(tidyverse);library(ggplot2)
 library(reshape2);library(scatterpie)
 library(stringr);library(ggpubr)
@@ -8,18 +8,21 @@ GHG <- read.csv("input/data of ghg emission.csv",header = T)
 #obtain studies with field measurement 
 GHG.field <- GHG[grepl("Field", GHG$GHG.source),]
 GHG.field <- GHG.field[!grepl("^Grass$", GHG.field$Field.crop),]
-GHG.field <- GHG.field[GHG.field$N2O == TRUE,]
-
 
 # Define custom colors, cold for indoor, warm for outdoor
 cold_colors <- c("#999999", "#009E73", "#0072B2", "#56B4E9")
 warm_colors <- c("#D55E00", "#E69F00", "#F0E442", "#CC79A7")
 
+# #GHG types
+sum(GHG.field$CO2) #62, 44.6%
+sum(GHG.field$CH4) #39, 28.0%
+sum(GHG.field$N2O) #122, 87.8%
+#sum(GHG.field$NH3) #15, 
 
 #GHG types 
 GHG_data <- GHG.field %>%
-  filter(str_detect(Technique, "Micrometeorology")|
-           str_detect(Technique, "Soil chamber")) %>%
+  #filter(str_detect(Technique, "Micrometeorology")|  #Include all methods
+  #         str_detect(Technique, "Soil chamber")) %>%
   separate_rows(Manure.type, sep = ",\\s*") %>%
   group_by(Pub..year, Manure.type) %>%
   summarize(
@@ -49,7 +52,7 @@ GHG_stacked$Percentage <- round(GHG_stacked$count /
 
 
 
-Fig1d <- ggplot(GHG_stacked, aes(x = Pub..year, y = count, fill = variable)) +
+Fig5 <- ggplot(GHG_stacked, aes(x = Pub..year, y = count, fill = variable)) +
   geom_col() +
   scale_fill_manual(values = c(warm_colors, cold_colors)) +
   labs(x = "Publication Year", y = "Publication number", fill = "GHG type") +
