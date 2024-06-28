@@ -58,3 +58,28 @@ dev.off()
 write_xlsx(GHG.application,
            file = "output/application time.xlsx",
            col.names = T, row.names = T)
+
+
+#calculation
+sum(GHG.application$Count[GHG.application$Application.time =="Spring"])#58
+sum(GHG.application$Count[GHG.application$Application.time =="Fall"])#40
+
+GHG.application %>%
+  filter(Application.time == "Spring", Season == "Growing" ) %>%
+  summarise(sum = sum(Count)) #35
+
+GHG.application %>%
+  filter(Application.time == "Spring", Season == "Year-Round" ) %>%
+  summarise(sum = sum(Count)) #21
+
+GHG.application %>%
+  filter(Application.time == "Spring", Season == "Non-Growing" ) %>%
+  summarise(sum = sum(Count)) #2
+
+GHG.application %>%
+  filter(Application.time == "Fall", Season == "Year-Round" ) %>%
+  summarise(sum = sum(Count)) #16
+
+GHG.application %>%
+  filter(Application.time == "Fall", Season == "Non-Growing" ) %>%
+  summarise(sum = sum(Count)) #10
