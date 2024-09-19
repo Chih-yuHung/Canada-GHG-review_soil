@@ -27,8 +27,8 @@ Fig1b <- ggplot(data = na.omit(livestock_data),
             size = 3) +
   scale_y_continuous(limits = c(0, 20), 
                      breaks = seq(0, 20, by = 2),
-                     expand = c(0, 0))+
+                     expand = c(0.01, 0))+
   scale_x_continuous(limits = c(1990, 2023), 
                      breaks = seq(1990, 2023 , by = 5),
-                     expand = c(0, 0))
+                     expand = c(0.03, 0))
 

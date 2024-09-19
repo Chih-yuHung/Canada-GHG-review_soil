@@ -88,24 +88,27 @@ ggplot(Tech_data, aes(x = Pub.year, y = Number, fill = Technique)) +
   theme(axis.title.x = element_text(size = 12)) +
   geom_text(aes(label = paste0(round(Percentage, 0), "%")),
             position = position_stack(vjust = 0.5),
-            size = 2) +
+            size = 3,
+            check_overlap = TRUE) +
   scale_y_continuous(limits = c(0, 18), 
                      breaks = seq(0, 18, by = 2),
-                     expand = c(0, 0))+
+                     expand = c(0.01, 0))+
   scale_x_continuous(limits = c(1990, 2024), 
                      breaks = seq(1990, 2024 , by = 5),
-                     expand = c(0, 0)) +
+                     expand = c(0.03, 0)) +
   annotate("text", x = 1990.5, y = 17.5, label = "(a)", size = 5, hjust = 0)
 dev.off()
 
 # Create the line plot
 png(file = "output/Techniques (b).png",
     width = 4800, height = 3600, res = 600)
-ggplot(Tech_complete, aes(x = Pub.year, y = Cum.number, color = Technique, group = Technique)) +
+
+ggplot(Tech_complete, aes(x = Pub.year, y = Cum.number, color = Technique, shape = Technique, group = Technique)) +
   geom_line(size = 1) +  # Draw lines
-  geom_point(size = 2) + # Add points for better visualization
-  labs(x = "Publication year", y = "Cumulative number of study", color = expression(N[2]*O ~ "emission estimation method")) +
-  scale_color_manual(values = c(cold_colors[1:3],warm_colors[1:2])) +
+  geom_point(size = 4) + # Increase size of the points and use different symbols
+  labs(x = "Publication year", y = "Cumulative number of study", color = expression(N[2]*O ~ "emission estimation method"), shape = expression(N[2]*O ~ "emission estimation method")) +  # Set same label for both
+  scale_color_manual(values = c(cold_colors[1:3], warm_colors[1:2])) +  # Define colors
+  scale_shape_manual(values = c(16, 17, 18, 19, 15)) +  # Use different shapes
   theme_classic() +
   theme(
     axis.text = element_text(size = 14, colour = "black"),
@@ -119,12 +122,13 @@ ggplot(Tech_complete, aes(x = Pub.year, y = Cum.number, color = Technique, group
   scale_x_continuous(
     limits = c(1990, 2023), 
     breaks = seq(1990, 2023, by = 5),
-    expand = c(0, 0)
+    expand = c(0.01, 0)
   ) +
   scale_y_continuous(
     limits = c(0, 60), 
-    expand = c(0, 0)
+    expand = c(0.03, 0)
   ) +
-  scale_fill_manual(values = c(cold_colors[1:3],warm_colors[1:2])) +
   annotate("text", x = 1990.5, y = 57.5, label = "(b)", size = 5, hjust = 0)
+
 dev.off()
+

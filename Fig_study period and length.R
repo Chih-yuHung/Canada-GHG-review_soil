@@ -69,13 +69,14 @@ Fig2a <- ggplot(data = na.omit(season_data),
   theme(axis.title.x = element_text(size = 12)) +
   geom_text(aes(label = paste0(round(Percentage, 0), "%")),
             position = position_stack(vjust = 0.5),
-            size = 2) +
+            size = 3,
+            check_overlap = TRUE) +
   scale_y_continuous(limits = c(0, 10), 
                      breaks = seq(0, 18, by = 2),
-                     expand = c(0, 0)) +
+                     expand = c(0.01, 0)) +
   scale_x_continuous(limits = c(1990, 2024), 
                      breaks = seq(1990, 2024 , by = 5),
-                     expand = c(0, 0)) +
+                     expand = c(0.03, 0)) +
   annotate("text", x = 1991, y = 9.5, 
           label = "(a)",size = 6)
 #Figure 2b
@@ -109,13 +110,14 @@ Fig2b <- ggplot(data = na.omit(period_data),
   theme(axis.title.x = element_text(size = 12)) +
   geom_text(aes(label = paste0(round(Percentage, 0), "%")),
             position = position_stack(vjust = 0.5),
-            size = 2) +
+            size = 3,
+            check_overlap = TRUE) +
   scale_y_continuous(limits = c(0, 10), 
                      breaks = seq(0, 18, by = 2),
-                     expand = c(0, 0)) +
+                     expand = c(0.01, 0)) +
   scale_x_continuous(limits = c(1990, 2024), 
                      breaks = seq(1990, 2024 , by = 5),
-                     expand = c(0, 0)) +
+                     expand = c(0.03, 0)) +
   annotate("text", x = 1991, y = 9.5, 
            label = "(b)",size = 6)
 

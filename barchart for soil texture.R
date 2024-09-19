@@ -24,7 +24,7 @@ texture_count <- GHG.field %>%
   group_by(Region, Texture) %>%
   count()
 
-#obatin the total studies based on region
+#obtain the total studies based on region
 region_total <- texture_count %>%
   group_by(Region) %>%
   summarise(total = sum(n))
@@ -100,16 +100,20 @@ plottexture$Texture <- factor(plottexture$Texture,
 #make sure the study results at the left side
 plottexture$Source <- factor(plottexture$Source,
                               levels = c("Study", "SLC"))
-
-
+#calculate the total n for each Source and province
+totals <- aggregate(n ~ Source + Region, data = plottexture, sum)
+#plottexture <- plottexture[order(plottexture$Source, plottexture$Texture, plottexture$Region), ]
+plottexture$Percentage <- plottexture$Percentage*100
 
 #The color in this study
 warm_colors <- c("#999999", "#009E73", "#0072B2", "#56B4E9")
+
+
 #Save the figure
 png(file = "output/soil texture.png",
     width = 4800, height = 3600, res = 600)
 ggplot(plottexture) +
-  geom_bar(aes(x = Source, y = n, fill = Texture),
+  geom_bar(aes(x = Source, y = Percentage, fill = Texture),
            position = "stack",
            stat = "identity") +
   theme_classic()+
@@ -120,17 +124,19 @@ ggplot(plottexture) +
   theme(strip.placement = "outside",
         strip.background = element_rect(fill = NA, color = "white"),
         panel.spacing = unit(-.01,"cm")) +
-  theme(legend.position = c(0.85,0.85)) +
+  theme(legend.position = "right") +
   scale_x_discrete(labels = c("SLC" = "A",
                               "Study" = "S")) +
-  scale_y_continuous(name = "Study count",
-      sec.axis = sec_axis( trans=~.*10^6, name="Area (ha)"))
-
+  scale_y_continuous(name = "Percentage")+
+      #sec.axis = sec_axis( trans=~.*10^6, name="Area (ha)"))
+  geom_text(data = totals, aes(x = Source, y = 100, label = round(n,1)),  # Display total n on top of the bars
+            vjust = -0.5, size = 3)  # Adjust text position and size
+            
 dev.off()
 
   
 
-#used to label percentage, not good looing, abandoned
+#used to label percentage, not good looking, abandoned
 # geom_text(aes(x = Source, y = n,
 #               label = paste0(round(Percentage*100, 0), "%")),
 #           position = position_stack(vjust = 0.8),
