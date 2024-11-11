@@ -51,8 +51,45 @@ ggplot(GHG.application, aes(x = Region, y = paste(Application.time, Season), col
   scale_x_discrete(labels = c("BC", "AB","SK","MB",
                               "ON", "QC","NB","NS",
                               "PE","NL"))+
-  guides(color = guide_legend(override.aes = list(size = 10)))
+  
+  # Adjust the size scale to show counts from 1 to 7
+  scale_size_continuous(
+    breaks = seq(1, 7, by = 2),  # Define breaks from 1 to 7
+    range = c(2, 10),  # Adjust point size range
+    labels = as.character(seq(1, 7, by = 2))  # Ensure labels are correctly displayed
+  ) +
+  
+  guides(color = guide_legend(override.aes = list(size = 6)))
+  
+  #guides(color = guide_legend(override.aes = list(size = 10)))
 dev.off()
+
+
+
+
+
+
+ggplot(GHG.application, aes(x = Region, y = paste(Application.time, Season), color = Manure.type, size = Count)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "Region", y = "Application time/season", color = "Manure type", size = "Count") +
+  scale_color_manual(values = c(cold_colors[2], warm_colors[2])) +
+  theme_classic() +
+  scale_x_discrete(labels = c("BC", "AB", "SK", "MB", "ON", "QC", "NB", "NS", "PE", "NL")) +
+  
+  # Define the size scale and include a break for Count = 1
+  scale_size_continuous(
+    breaks = c(1, 5, 10, 20),  # Adjust the breaks to show relevant sizes
+    labels = c("1", "5", "10", "20"),  # Corresponding labels
+    range = c(2, 10),  # Adjust size range of points
+    guide = guide_legend(title = "Count (size)", override.aes = list(size = c(2, 4, 6, 8)))
+  ) +
+  
+  guides(color = guide_legend(override.aes = list(size = 6)))  # Adjust color legend
+
+
+
+
+
 
 #Export file
 write_xlsx(GHG.application,

@@ -54,7 +54,7 @@ sum(season_data$Number[season_data$Season == "Year-Round"]) #17
 
 Fig2a <- ggplot(data = na.omit(season_data), 
                 aes(x = Pub..year, y = Number, fill = Season)) +
-  geom_bar(stat = "identity") +
+  geom_bar(stat = "identity",width = 0.97) +
   labs(x = "Publication year", y = "Study count") +
   scale_fill_manual(values = c(cold_colors)) +
   theme_classic() +
@@ -67,9 +67,9 @@ Fig2a <- ggplot(data = na.omit(season_data),
         legend.text = element_text(size = 12),
         axis.line = element_line(color = "black")) +
   theme(axis.title.x = element_text(size = 12)) +
-  geom_text(aes(label = paste0(round(Percentage, 0), "%")),
+  geom_text(aes(label = paste0(round(Percentage, 0))),
             position = position_stack(vjust = 0.5),
-            size = 3,
+            size = 3.4,
             check_overlap = TRUE) +
   scale_y_continuous(limits = c(0, 10), 
                      breaks = seq(0, 18, by = 2),
@@ -95,7 +95,7 @@ period_data <- GHG.field %>%
 #Figure for period
 Fig2b <- ggplot(data = na.omit(period_data), 
                 aes(x = Pub..year, y = Number, fill = Period)) +
-  geom_bar(stat = "identity") +
+  geom_bar(stat = "identity", width = 0.97) +
   labs(x = "Publication year", y = "Study count") +
   scale_fill_manual(values = c(cold_colors)) +
   theme_classic() +
@@ -108,9 +108,9 @@ Fig2b <- ggplot(data = na.omit(period_data),
         legend.text = element_text(size = 12),
         axis.line = element_line(color = "black")) +
   theme(axis.title.x = element_text(size = 12)) +
-  geom_text(aes(label = paste0(round(Percentage, 0), "%")),
+  geom_text(aes(label = paste0(round(Percentage, 0))),
             position = position_stack(vjust = 0.5),
-            size = 3,
+            size = 3.4,
             check_overlap = TRUE) +
   scale_y_continuous(limits = c(0, 10), 
                      breaks = seq(0, 18, by = 2),

@@ -73,8 +73,9 @@ Tech_complete <- Tech_complete %>%
 png(file = "output/Techniques (a).png",
     width = 4800, height = 3600, res = 600)
 ggplot(Tech_data, aes(x = Pub.year, y = Number, fill = Technique)) +
-  geom_bar(stat = "identity") +
-  labs(x = "Publication year", y = "Study count", fill = expression(N[2]*O ~ "emission estimation method")) +
+  geom_bar(stat = "identity",width = 0.97) +
+  labs(x = "Publication year", y = "Study count",
+       fill = expression(N[2]*O ~ "emission estimation method")) +
   scale_fill_manual(values = c(cold_colors[1:3],warm_colors[1:2])) +
   theme_classic() +
   theme(axis.text = element_text(size = 14, colour = "black"),
@@ -86,9 +87,9 @@ ggplot(Tech_data, aes(x = Pub.year, y = Number, fill = Technique)) +
         legend.text = element_text(size = 12),
         axis.line = element_line(color = "black")) +
   theme(axis.title.x = element_text(size = 12)) +
-  geom_text(aes(label = paste0(round(Percentage, 0), "%")),
+  geom_text(aes(label = paste0(round(Percentage, 0))),
             position = position_stack(vjust = 0.5),
-            size = 3,
+            size = 3.4,
             check_overlap = TRUE) +
   scale_y_continuous(limits = c(0, 18), 
                      breaks = seq(0, 18, by = 2),
